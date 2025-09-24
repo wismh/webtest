@@ -2,12 +2,36 @@
 <html>
 
 <head>
+    <style>
+        iframe#unity-frame {
+            border: 0;
+            transition: all 0.3s ease;
+        }
 
+        iframe.fullscreen#unity-frame {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+        }
+    </style>
 </head>
 
 <body>
-    <iframe frameborder="0" src="https://compliance-quest.netlify.app/" allowfullscreen="" width="980"
-        height="580"></iframe>
+    <iframe id="unity-frame" src="https://charming-pothos-2d3a05.netlify.app/" width="980" height="580"
+        allowfullscreen></iframe>
+
+    <script>
+        const iframe = document.getElementById("unity-frame");
+
+        window.addEventListener("message", (event) => {
+            if (event.data.type === "goFullscreen") {
+                iframe.classList.add("fullscreen");
+            }
+        });
+    </script>
 </body>
 
 </html>
