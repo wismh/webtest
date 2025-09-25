@@ -3,17 +3,12 @@
 
 <head>
     <style>
-        iframe#unity-frame {
-            border: 0;
-            transition: all 0.3s ease;
-        }
-
         iframe.fullscreen#unity-frame {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
-            height: 100vh;
+            height: 90vh;
             z-index: 9999;
         }
     </style>
@@ -29,6 +24,9 @@
         window.addEventListener("message", (event) => {
             if (event.data.type === "goFullscreen") {
                 iframe.classList.add("fullscreen");
+            }
+            if (event.data.type === "quitFullscreen") {
+                iframe.classList.remove("fullscreen");
             }
         });
     </script>
