@@ -21,10 +21,9 @@
         const iframe = document.getElementById("unity-frame");
 
         const resizeIframe = () => {
-            const iframe = document.getElementById("unity-frame");
-            if (iframe && iframe.classList.contains("fullscreen")) {
+            if (iframe.classList.contains("fullscreen")) {
                 iframe.style.height = window.innerHeight + "px";
-            } else if (iframe) {
+            } else {
                 iframe.style.height = "";
             }
         }
