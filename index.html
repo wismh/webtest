@@ -8,7 +8,6 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 90%;
             z-index: 9999;
         }
     </style>
@@ -29,6 +28,13 @@
                 iframe.classList.remove("fullscreen");
             }
         });
+
+        const resizeIframe = () => {
+            iframe.style.height = window.innerHeight + "px";
+        }
+
+        window.addEventListener("resize", resizeIframe);
+        resizeIframe();
     </script>
 </body>
 
