@@ -20,15 +20,6 @@
     <script>
         const iframe = document.getElementById("unity-frame");
 
-        window.addEventListener("message", (event) => {
-            if (event.data.type === "goFullscreen") {
-                iframe.classList.add("fullscreen");
-            }
-            if (event.data.type === "quitFullscreen") {
-                iframe.classList.remove("fullscreen");
-            }
-        });
-
         const resizeIframe = () => {
             const iframe = document.getElementById("unity-frame");
             if (iframe && iframe.classList.contains("fullscreen")) {
@@ -37,6 +28,17 @@
                 iframe.style.height = "";
             }
         }
+
+        window.addEventListener("message", (event) => {
+            if (event.data.type === "goFullscreen") {
+                iframe.classList.add("fullscreen");
+                resizeIframe();
+            }
+            if (event.data.type === "quitFullscreen") {
+                iframe.classList.remove("fullscreen");
+                resizeIframe();
+            }
+        });
 
         window.addEventListener("resize", resizeIframe);
         resizeIframe();
