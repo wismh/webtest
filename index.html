@@ -30,7 +30,12 @@
         });
 
         const resizeIframe = () => {
-            iframe.style.height = window.innerHeight + "px";
+            const iframe = document.getElementById("unity-frame");
+            if (iframe && iframe.classList.contains("fullscreen")) {
+                iframe.style.height = window.innerHeight + "px";
+            } else if (iframe) {
+                iframe.style.height = "";
+            }
         }
 
         window.addEventListener("resize", resizeIframe);
